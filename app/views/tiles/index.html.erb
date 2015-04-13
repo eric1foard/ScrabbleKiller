@@ -1,12 +1,34 @@
-<h1>Welcome!</h1>
 
-<div ng-controller="TileCtrl">
-	<form ng-submit="play(tiles)">
-		<input type="text" class="form control" ng-model="tiles" placeholder="Enter your letters">
-		<input type="submit" value="Go!" class="btn btn-default">
-	</form> 
 
-	<div>
-		{{result}}
+
+
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="login-panel panel panel-default panel-transparent" style="margin-top:5%;">
+				<div class="panel-heading">
+
+					<h3 class="panel-title" style="font-size:20px">
+						<center>
+							<div style="text-align: center" ng-controller="TileCtrl">
+								<h1><font color="grey">{enter your letters.}</font></h1>
+								<form class="form-horzontal" ng-submit="play(tiles)">
+									<input type="text" class="form control" ng-model="tiles" placeholder="Enter your letters">
+									<input type="submit" value="Go!" class="btn btn-primary btn-lg raised">
+								</form> 
+
+								<div>
+									<font color="grey">{{result}}</font>
+								</div>
+							</div>
+						</center>
+					</h3>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+

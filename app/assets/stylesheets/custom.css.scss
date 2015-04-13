@@ -5,13 +5,30 @@ html {
 overflow-y: scroll;
 }
 
-body {
-padding-top: 150px;
-
+.navbar {
 padding-left: 45px;
-background: url('scrabble.jpg');
+background-color: #008080;
+background-image: none;
+background-repeat: no-repeat;
+opacity: 0.8;
+filter: alpha(opacity=80); /* For IE8 and earlier */
+font-family: 'Lucida Sans Typewriter'
+
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+body {
+padding-top: 10%;
+background: url('board.png');
 background-size: 100%;
-background-size: cover;
+opacity: 0.9;
+font-size: 24px;
+font-family: 'Lucida Sans Typewriter'
+
 }
 
 section {
@@ -29,3 +46,15 @@ text-align: center;
 .center h1 {
 margin-bottom: 10px;
 }
+
+.btn-primary.raised {
+    box-shadow: 0 3px 0 0 #007299;
+}
+
+.btn-primary.raised:active, .btn-primary.raised.active {
+    background: #33a6cc;
+    box-shadow: none;
+    margin-bottom: -3px;
+    margin-top: 3px;
+}
+
