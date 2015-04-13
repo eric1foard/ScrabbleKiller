@@ -1,0 +1,12 @@
+<h1>Welcome!</h1>
+
+<div ng-controller="TileCtrl">
+	<form ng-submit="play(tiles)">
+		<input type="text" class="form control" ng-model="tiles" placeholder="Enter your letters">
+		<input type="submit" value="Go!" class="btn btn-default">
+	</form> 
+
+	<div>
+		{{result}}
+	</div>
+</div>
