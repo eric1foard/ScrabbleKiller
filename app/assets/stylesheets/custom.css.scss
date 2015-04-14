@@ -5,7 +5,9 @@ html {
 overflow-y: scroll;
 }
 
+
 .navbar {
+height: 10%;
 padding-left: 45px;
 background-color: #008080;
 background-image: none;
@@ -17,18 +19,23 @@ font-family: 'Lucida Sans Typewriter'
 }
 
 .col-centered{
-    float: none;
-    margin: 0 auto;
+float: none;
+margin: 0 auto;
 }
 
 body {
 padding-top: 10%;
 background: url('board.png');
 background-size: 100%;
-opacity: 0.9;
-font-size: 24px;
+font-size: 24px; /* does this do anything? */
 font-family: 'Lucida Sans Typewriter'
 
+}
+
+.mystyle input[type="text"] {
+height: 50px;
+font-size: 10px;
+line-height: 14px;
 }
 
 section {
@@ -37,6 +44,7 @@ overflow: auto;
 
 textarea {
 resize: vertical;
+font-size: 24px;
 }
 
 .center {
@@ -48,13 +56,13 @@ margin-bottom: 10px;
 }
 
 .btn-primary.raised {
-    box-shadow: 0 3px 0 0 #007299;
+box-shadow: 0 3px 0 0 #007299;
 }
 
 .btn-primary.raised:active, .btn-primary.raised.active {
-    background: #33a6cc;
-    box-shadow: none;
-    margin-bottom: -3px;
-    margin-top: 3px;
+background: #33a6cc;
+box-shadow: none;
+margin-bottom: -3px;
+margin-top: 3px;
 }
 
