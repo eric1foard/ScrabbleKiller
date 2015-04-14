@@ -5,25 +5,24 @@ class TilesController < ApplicationController
 
 	def play
 		user_tiles = params[:user_tiles]
-		puts user_tiles
 		filepath = "#{Rails.root}/public/sowpods.txt"
 		dict = init_set(filepath);
-		plays = possible_plays(user_tiles)
-		max_play = search_for_max(plays, dict)
+		puts "completed dict init"
+		max_play = search_for_max(user_tiles, dict)
 		render :text=> max_play
-		
 	end
-	# string -> array
+
+	# string -> string
 	# INPUT: string representing tiles in user's hand
-	# OUTPUT: priority queue of all permutations of tiles in user's hand
-	def possible_plays(user_tiles)
+	# OUTPUT: valid scrabble word of maximum value, 
+	# or error if none exists
+	def search_for_max(user_tiles, dict)
 		possible_plays = Containers::PriorityQueue.new
-
-		#convert tiles to string so we can use
-		# permutation method
+		#convert tiles to array
 		user_tiles = user_tiles.chars.to_a
+		i = user_tiles.length
 
-		for i in 1..user_tiles.length do 
+		while (i>0) do
 			perms = user_tiles.permutation(i)
 			for perm in perms do
 				score = get_score(perm)
@@ -31,25 +30,17 @@ class TilesController < ApplicationController
 				perm = perm.join("")
 				possible_plays.push(perm, score)
 			end
+			
+			# is there a valid word of length i?
+			while (not possible_plays.empty?) do
+				word = possible_plays.pop
+				if is_valid_word(word, dict)
+					return word
+				end	
+			end
+			i = i-1
 		end
-		return possible_plays
-	end
-
-	#PQ -> string
-	# INPUT: PQ returned by possible_plays
-	# OUTPUT: valid scrabble word of maximum value
-	def search_for_max(possible_plays, dict)
-		found = false
-
-		while ((not found) && (not possible_plays.empty?)) do
-			word = possible_plays.pop
-			# puts "PERM: " + word
-			if is_valid_word(word, dict)
-				found = true
-			end	
-		end
-		return word
-		# return word
+		return "no word found!"
 	end
 
 	def init_set(filepath)
@@ -61,8 +52,6 @@ class TilesController < ApplicationController
 	end
 
 	def is_valid_word(word, dict)
-		# open sowpods.txt
-		# clean word 
 		if dict.member? word.downcase.chomp
 			return true
 		end
@@ -87,38 +76,16 @@ class TilesController < ApplicationController
 		case letter
 		when "a" 
 			return 1
-		when "b" 
-			return 3
-		when "c" 
-			return 3
-		when "d" 
-			return 2
 		when "e" 
 			return 1
-		when "f" 
-			return 4
-		when "g" 
-			return 2
-		when "h" 
-			return 4
 		when "i" 
 			return 1
-		when "j" 
-			return 8
-		when "k" 
-			return 5
 		when "l" 
 			return 1
-		when "m" 
-			return 3
 		when "n" 
 			return 1
 		when "o" 
 			return 1
-		when "p" 
-			return 3
-		when "q" 
-			return 10
 		when "r" 
 			return 1
 		when "s" 
@@ -127,15 +94,37 @@ class TilesController < ApplicationController
 			return 1
 		when "u" 
 			return 1
+		when "g" 
+			return 2
+		when "d" 
+			return 2
+		when "p" 
+			return 3
+		when "c" 
+			return 3
+		when "m" 
+			return 3
+		when "b" 
+			return 3
+		when "f" 
+			return 4
+		when "h" 
+			return 4
 		when "v" 
 			return 4
 		when "w" 
 			return 4
-		when "x" 
-			return 8
 		when "y" 
 			return 4
+		when "k" 
+			return 5
+		when "x" 
+			return 8
+		when "j" 
+			return 8
 		when "z" 
+			return 10
+		when "q" 
 			return 10
 		else 
 			return 0
