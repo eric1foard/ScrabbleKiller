@@ -35,6 +35,10 @@ group :production do
 	gem 'rails_12factor'
 end
 
+group :development, :test do
+	gem 'sqlite3',     '1.3.9'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
