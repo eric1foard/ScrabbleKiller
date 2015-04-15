@@ -5,7 +5,7 @@ class TilesController < ApplicationController
 
 	def play
 		user_tiles = params[:user_tiles]
-		filepath = "#{Rails.root}/public/sowpods.txt"
+		filepath = "#{Rails.root}/public/wwf.txt"
 		dict = init_set(filepath);
 		puts "completed dict init"
 		max_play = search_for_max(user_tiles, dict)
