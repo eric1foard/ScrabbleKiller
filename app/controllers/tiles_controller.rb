@@ -33,7 +33,7 @@ class TilesController < ApplicationController
 			prefix = trie.longest_prefix(perm)
 			#found optimal play
 			if prefix.length == num_tiles
-				return prefix
+				return "you cheater! play '" + prefix + "' for " + trie.get(prefix).to_s + " points and you're sure to win!"
 			end
 
 			if prefix != ""
