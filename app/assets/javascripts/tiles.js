@@ -8,7 +8,7 @@ ScrabbleKiller.controller('TileCtrl', ['$scope', '$http',
 
 			$http.get('tiles/play/' + tiles)
 			.success(function(data){
-				$scope.result = 'you cheater! Play "'+data+'" and you are sure to win';
+				$scope.result = data;
 				console.log(data);
 				});
 			$scope.tiles = '';
