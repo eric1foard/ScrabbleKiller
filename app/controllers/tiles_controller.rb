@@ -47,7 +47,7 @@ class TilesController < ApplicationController
 		end
 
 		if max_score > 0
-			return "you cheater! Play " + max_play + " for " + max_score.to_s + " points and you're sure to win!"
+			return "you cheater! play '" + max_play + "' for " + max_score.to_s + " points and you're sure to win!"
 		end
 		return "no valid play found!"
 	end
